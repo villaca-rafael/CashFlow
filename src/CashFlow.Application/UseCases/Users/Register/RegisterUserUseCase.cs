@@ -31,7 +31,7 @@ public class RegisterUserUseCase : IRegisterUserUseCase
     {
         var result = new RegisterUserValidator().Validate(request);
 
-        if (!result.IsValid())
+        if (!result.IsValid)
         {
             var errorMessages = result.Errors.Select(f => f.ErrorMessage).ToList();
 
