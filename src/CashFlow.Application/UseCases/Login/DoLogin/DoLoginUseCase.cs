@@ -28,7 +28,7 @@ public class DoLoginUseCase : IDoLoginUseCase
         var user = await _repository.GetUserByEmail(request.Email) ??
             throw new InvalidLoginException();
 
-        var passwordMatch = _passwordEncripter.Verify(request.Password, request.Password);
+        var passwordMatch = _passwordEncripter.Verify(request.Password, user.Password);
 
         if (!passwordMatch) throw new InvalidLoginException();
 
